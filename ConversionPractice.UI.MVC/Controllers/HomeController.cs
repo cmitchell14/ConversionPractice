@@ -15,7 +15,7 @@ namespace ConversionPractice.UI.MVC.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "About";
 
             return View();
         }

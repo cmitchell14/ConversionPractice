@@ -1,42 +1,65 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>titan - @ViewBag.Title</title>
+
+    <link rel="stylesheet" href="~/Content/styles.css" type="text/css" />
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--
+    titan, a free CSS web template by ZyPOP (zypopwebtemplates.com/)
+
+    Download: http://zypopwebtemplates.com/
+
+    License: Creative Commons Attribution
+    //-->
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+    <div id="container">
+        <header>
+            <h1><a href="/">Titan<span>Name</span></a></h1>
+            <h2>your website slogan here</h2>
+        </header>
+        <nav>
+            <ul>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact","Contact","Home")</li>
+                @*<li>@Html.ActionLink(</li>
+    <li>@Html.ActionLink(</li>*@
+</ul>
+        </nav>
+
+
+        <div id="body">
+
+            @RenderBody()
+
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <div class="footer-bottom">
+            <p>&copy; Titan @DateTime.Now.Year <a href="http://zypopwebtemplates.com/">Free CSS Website Templates</a> by ZyPOP</p>
+        </div>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
     @RenderSection("scripts", required: false)
+
+    <script>
+
+        $('.menu li').each(function () {
+            //In this example, the class is attached to the li, so you would need to go one level further to check the href value of the anchor tag, and ensure it matches what is found in the browser.
+            if ($(this).find('a').attr('href') == window.location.pathname) {
+
+                //IF they match, we would add the correct class name (we are using active here).
+                //$(this) refers to the li (because that's the last item in the DOM that was specified before the each function.)
+                $(this).addClass('active');
+            }
+        });
+
+    </script>
 </body>
 </html>
